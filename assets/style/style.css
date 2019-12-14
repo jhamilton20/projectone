@@ -3,3 +3,19 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
+
+footer{
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+}
+.card-panel {
+    background-color: rgb(170, 159, 160);
+}
+#cityName {
+    background-color: white;
+}
+#searchLabel {
+    font-size: 20px;
+    color: black;
+}
