@@ -48,7 +48,7 @@ function weatherCall(lat, lon) {
       moonPhase(data);
     }
   })
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 6; i++) {
     let date = ""
     if (i == 0) {
       date = ""
@@ -78,7 +78,7 @@ function getForcast(input) {
     let unixTimeStamp = input.hourly.data[i].time;
     let date = new Date(unixTimeStamp * 1000);
     let hour = date.getHours();
-
+    let clouds = input.hourly.data[i].cloudCover
     if (hour == 22) {
       let weekDay = date.getDay();
       let displayDay = day[weekDay];
@@ -97,6 +97,14 @@ function getForcast(input) {
       $("#conditions" + x).append(newConditions);
       $("#conditions" + x).append(newIcon);
       $("#temp" + x).append(newTemp);
+      if (clouds < .2){
+        $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/clear.jpg)")
+      }else if(clouds < .4){
+        $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/light.jpg)")
+      }
+      else{
+        $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/cloudy.jpg)")
+      }
       x++;
     }
   }
@@ -113,28 +121,28 @@ function moonPhase(input) {
     let moon = input.daily.data[i].moonPhase
     if(moon < .05 ){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/0.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon < .20||moon>.95){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/10.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon< .30){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/25.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon<.45){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/40.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon <.55){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/50.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon<.70){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/60.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon<.80){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/75.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else{
       $("#moonphase" + (i+1)).attr("src", "./assets/images/90.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }
 
 }
