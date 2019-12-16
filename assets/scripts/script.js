@@ -43,6 +43,7 @@ function weatherCall(lat, lon) {
     url: proxy + weatherURL,
     success: function (data) {
       console.log(data);
+      moonPhase(data);
     }
   })
   for (let i = 0; i < 7; i++) {
@@ -59,7 +60,10 @@ function weatherCall(lat, lon) {
       url: proxy + astronomyURL,
       success: function (data) {
         console.log(data);
-
+        let moonrise = data.moonrise ;
+        let moonset = data.moonset;
+        $("#moonrise" + (i +1)).text("Moonrise: " +moonrise)
+        $("#moonset" + (i +1)).text("Moonset: " +moonset)
       }
     })
   }
@@ -67,23 +71,31 @@ function weatherCall(lat, lon) {
 
 function moonPhase(input) {
   for (let i = 0; i < input.daily.data.length; i++) {
-    let moon = input.daily.data[i].moonphase
+    let moon = input.daily.data[i].moonPhase
     if(moon < .05 ){
-      $("#moonphase" + (i+1)).attr("src", )
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/0.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
     }else if(moon < .20||moon>.95){
-
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/10.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
     }else if(moon< .30){
-
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/25.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
     }else if(moon<.45){
-
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/40.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
     }else if(moon <.55){
-
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/50.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
     }else if(moon<.70){
-
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/60.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
     }else if(moon<.80){
-
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/75.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
     }else{
-
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/90.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
     }
 
 }
