@@ -6,7 +6,8 @@ window.onload = function () {
 
   $("#button").on("click", function (event) {
     event.preventDefault();
-    let search = $("#city").val();
+
+    let search = $("#search").val();
 
     $.ajax({
       url: "https://api.opencagedata.com/geocode/v1/json?key=2a2e4cd294074aceaeedaa336caa3426&q=" + search,
@@ -44,6 +45,7 @@ function weatherCall(lat, lon) {
     success: function (data) {
       console.log(data);
       getForcast(data);
+      moonPhase(data);
     }
   })
   for (let i = 0; i < 7; i++) {
@@ -56,17 +58,18 @@ function weatherCall(lat, lon) {
 
 
     let astronomyURL = "https://api.ipgeolocation.io/astronomy?apiKey=046a27f2390c47298644a5a88760ffbb&lat=" + lat + "&long=" + lon + date;
-    // console.log(astronomyURL)
     $.ajax({
       url: proxy + astronomyURL,
       success: function (data) {
-        // console.log(data);
+        console.log(data);
+        let moonrise = data.moonrise ;
+        let moonset = data.moonset;
+        $("#moonrise" + (i +1)).text("Moonrise: " +moonrise)
+        $("#moonset" + (i +1)).text("Moonset: " +moonset)
       }
     })
   }
 }
-
-
 function getForcast(input) {
   let x = 1;
 
@@ -104,3 +107,35 @@ function getForcast(input) {
 
 
 
+
+function moonPhase(input) {
+  for (let i = 0; i < input.daily.data.length; i++) {
+    let moon = input.daily.data[i].moonPhase
+    if(moon < .05 ){
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/0.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
+    }else if(moon < .20||moon>.95){
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/10.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
+    }else if(moon< .30){
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/25.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
+    }else if(moon<.45){
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/40.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
+    }else if(moon <.55){
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/50.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
+    }else if(moon<.70){
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/60.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
+    }else if(moon<.80){
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/75.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
+    }else{
+      $("#moonphase" + (i+1)).attr("src", "./assets/images/90.png")
+      $("#moonphase" + (i+1)).attr("height", "200px")
+    }
+
+}
+}
