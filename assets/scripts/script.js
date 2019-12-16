@@ -4,9 +4,9 @@ window.onload = function () {
 
   latLon();
 
-  $("#button").on("click", function (event) {
+  $("#search").on("click", function (event) {
     event.preventDefault();
-    let search = $("#city").val();
+    let search = $("#cityName").val();
     
     $.ajax({
       url: "https://api.opencagedata.com/geocode/v1/json?key=2a2e4cd294074aceaeedaa336caa3426&q=" + search,
@@ -55,7 +55,6 @@ function weatherCall(lat, lon) {
 
    
   let astronomyURL = "https://api.ipgeolocation.io/astronomy?apiKey=046a27f2390c47298644a5a88760ffbb&lat=" + lat + "&long=" + lon + date;
-  console.log(astronomyURL)
   $.ajax({
     url: proxy + astronomyURL,
     success: function (data) {
