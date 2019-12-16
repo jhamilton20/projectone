@@ -66,9 +66,9 @@ function weatherCall(lat, lon) {
   }
 }
 
-// Lynn's code //
 
 function getForcast(input) {
+  let x = 1;
 
   for (let i = 0; i < input.hourly.data.length; i++) {
     let day = ["Sunday Night", "Monday Night", "Tuesday Night", "Wednesday Night", "Thursday Night", "Friday Night", "Saturday Night"];
@@ -90,10 +90,11 @@ function getForcast(input) {
       let icon = input.hourly.data[i].icon;
       let newIcon = $("<img>").text(icon);
 
-      $("#forcast").append(newDisplayDay);
-      $("#forcast").append(newConditions);
-      $("#forcast").append(newIcon);
-      $("#forcast").append(newTemp);
+      $("#date" + x).append(newDisplayDay);
+      $("#conditions" + x).append(newConditions);
+      $("#conditions" + x).append(newIcon);
+      $("#temp" + x).append(newTemp);
+      x++;
     }
   }
 
