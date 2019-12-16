@@ -1,0 +1,33 @@
+body {
+    background-image: url(https://702pros.com/wp-content/uploads/2018/08/wallpaper.wiki-Constellation-Background-PIC-WPC005460.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+footer{
+    position: relative;
+    bottom: 0%;
+    width: 100%;
+}
+.card-panel {
+    background-color: rgb(170, 159, 160);
+}
+#cityName {
+    background-color: white;
+}
+#searchLabel {
+    font-size: 20px;
+    color: black;
+}
+
+.row{
+    margin: 0px auto;
+}
+
+.form{
+    width: 100px;
+}
+
+a{
+    margin-top:-60px;
+}
