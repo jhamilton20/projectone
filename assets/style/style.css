@@ -4,6 +4,13 @@ body {
     background-attachment: fixed;
 }
 
+ .day {
+    height: 100vh;
+}
+.grey {
+    height: 100vh;
+}
+
 footer{
     position: relative;
     bottom: 0%;
@@ -31,3 +38,17 @@ footer{
 a{
     margin-top:-60px;
 }
+
+
+
+
+
+.invisible{
+    display: none;
+    height: 0;
+    width: 0;
+    padding:0;
+    margin:0;
+}
+ 
+
