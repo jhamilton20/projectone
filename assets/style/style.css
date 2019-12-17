@@ -4,6 +4,13 @@ body {
     background-attachment: fixed;
 }
 
+ .day {
+    height: 100vh;
+}
+.grey {
+    height: 100vh;
+}
+
 footer{
     position: relative;
     bottom: 0%;
