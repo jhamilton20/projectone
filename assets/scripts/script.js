@@ -1,5 +1,7 @@
 
 let proxy = 'https://cors-anywhere.herokuapp.com/';
+let lat;
+let lon;
 window.onload = function () {
 
   latLon();
@@ -14,8 +16,8 @@ window.onload = function () {
       method: "GET"
     }).then(function (data) {
       // console.log(data)
-      let lat = data.results[0].geometry.lat;
-      let lon = data.results[0].geometry.lng;
+      lat = data.results[0].geometry.lat;
+      lon = data.results[0].geometry.lng;
       weatherCall(lat, lon)
     }
     )
@@ -30,7 +32,6 @@ window.onload = function () {
         // console.log(data);
         let lat = data.latitude;
         let lon = data.longitude;
-        $("iframe").attr("src", "https://virtualsky.lco.global/embed/index.html?longitude=" + lon + "&latitude=" + lat + "&projection=stereo&constellations=true&constellationlabels=true&meteorshowers=true&showdate=false&showposition=false&gridlines_az=true&live=true&az=358.25")
 
         // using cordnates to get weather
         weatherCall(lat, lon);
@@ -82,9 +83,12 @@ let x = 1;
     let date = new Date(unixTimeStamp * 1000);
     let hour = date.getHours();
     let clouds = input.hourly.data[i].cloudCover
+    let lat = input.latitude
+    let lon = input.longitude
     if (hour == 22) {
       let displayDate;
       if (x ==1) {
+
         displayDate  = "Tonight"
       } else if (x == 2) {
         displayDate = "Tomorrow Night"
@@ -119,6 +123,14 @@ let x = 1;
       else{
         $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/cloudy.jpg)")
       }
+      
+    console.log(date);
+    console.log(lat);
+    console.log(lon);
+      $("#stars"+ x).on("click",function(){
+        $("#bigdiv").attr("class","overlay")
+        $("iframe").attr("src", "https://virtualsky.lco.global/embed/index.html?longitude="+lon+"&latitude="+lat+"&projection=stereo&constellations=true&constellationlabels=true&magnitude=6&clock="+ date)
+      })
       x++;
     }
   }
