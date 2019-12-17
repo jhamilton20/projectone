@@ -31,3 +31,12 @@ footer{
 a{
     margin-top:-60px;
 }
+
+ .column{
+     height: 100%;
+     background-color: white;
+     height: 100vh;
+ }
+
+ 
+  
