@@ -4,7 +4,7 @@ window.onload = function () {
 
   latLon();
 
-  $("#button").on("click", function (event) {
+  $("#formwidth").on("submit", function (event) {
     event.preventDefault();
 
     let search = $("#search").val();
@@ -64,6 +64,9 @@ function weatherCall(lat, lon) {
         console.log(data);
         let moonrise = data.moonrise ;
         let moonset = data.moonset;
+        
+        $("#moonrise" + (i +1)).text("")
+        $("#moonset" + (i +1)).text("")
         $("#moonrise" + (i +1)).text("Moonrise: " +moonrise)
         $("#moonset" + (i +1)).text("Moonset: " +moonset)
       }
@@ -71,18 +74,26 @@ function weatherCall(lat, lon) {
   }
 }
 function getForcast(input) {
-  let x = 1;
+let x = 1;
 
   for (let i = 0; i < input.hourly.data.length; i++) {
     let day = ["Sunday Night", "Monday Night", "Tuesday Night", "Wednesday Night", "Thursday Night", "Friday Night", "Saturday Night"];
     let unixTimeStamp = input.hourly.data[i].time;
     let date = new Date(unixTimeStamp * 1000);
     let hour = date.getHours();
-
+    let clouds = input.hourly.data[i].cloudCover
     if (hour == 22) {
+      let displayDate;
+      if (x ==1) {
+        displayDate  = "Tonight"
+      } else if (x == 2) {
+        displayDate = "Tomorrow Night"
+      } else {
       let weekDay = date.getDay();
-      let displayDay = day[weekDay];
-      let newDisplayDay = $("<p>").text(displayDay);
+
+      displayDate = day[weekDay];
+      }
+      let newDisplayDay = $("<p>").text(displayDate);
 
       let conditions = input.hourly.data[i].summary;
       let newConditions = $("<p>").text(conditions);
@@ -92,11 +103,22 @@ function getForcast(input) {
 
       let icon = input.hourly.data[i].icon;
       let newIcon = $("<img>").text(icon);
+      $("#date" + x).text("");
+      $("#conditions" + x).text("");
+      $("#temp" + x).text("");
 
       $("#date" + x).append(newDisplayDay);
       $("#conditions" + x).append(newConditions);
       $("#conditions" + x).append(newIcon);
       $("#temp" + x).append(newTemp);
+      if (clouds < .2){
+        $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/clear.jpg)")
+      }else if(clouds < .6){
+        $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/light.jpg)")
+      }
+      else{
+        $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/cloudy.jpg)")
+      }
       x++;
     }
   }
@@ -113,28 +135,28 @@ function moonPhase(input) {
     let moon = input.daily.data[i].moonPhase
     if(moon < .05 ){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/0.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon < .20||moon>.95){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/10.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon< .30){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/25.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon<.45){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/40.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon <.55){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/50.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon<.70){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/60.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else if(moon<.80){
       $("#moonphase" + (i+1)).attr("src", "./assets/images/75.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }else{
       $("#moonphase" + (i+1)).attr("src", "./assets/images/90.png")
-      $("#moonphase" + (i+1)).attr("height", "200px")
+      $("#moonphase" + (i+1)).attr("height", "150px")
     }
 
 }
