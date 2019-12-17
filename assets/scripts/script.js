@@ -74,7 +74,7 @@ function weatherCall(lat, lon) {
   }
 }
 function getForcast(input) {
-  let x = 1;
+let x = 1;
 
   for (let i = 0; i < input.hourly.data.length; i++) {
     let day = ["Sunday Night", "Monday Night", "Tuesday Night", "Wednesday Night", "Thursday Night", "Friday Night", "Saturday Night"];
@@ -83,9 +83,17 @@ function getForcast(input) {
     let hour = date.getHours();
     let clouds = input.hourly.data[i].cloudCover
     if (hour == 22) {
+      let displayDate;
+      if (x ==1) {
+        displayDate  = "Tonight"
+      } else if (x == 2) {
+        displayDate = "Tomorrow Night"
+      } else {
       let weekDay = date.getDay();
-      let displayDay = day[weekDay];
-      let newDisplayDay = $("<p>").text(displayDay);
+
+      displayDate = day[weekDay];
+      }
+      let newDisplayDay = $("<p>").text(displayDate);
 
       let conditions = input.hourly.data[i].summary;
       let newConditions = $("<p>").text(conditions);
