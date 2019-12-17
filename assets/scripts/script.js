@@ -15,7 +15,8 @@ window.onload = function () {
       url: "https://api.opencagedata.com/geocode/v1/json?key=2a2e4cd294074aceaeedaa336caa3426&q=" + search,
       method: "GET"
     }).then(function (data) {
-      // console.log(data)
+      $("#location").text("");
+      $("#location").text(data.results[0].formatted.split(",")[0]);
       lat = data.results[0].geometry.lat;
       lon = data.results[0].geometry.lng;
       weatherCall(lat, lon)
@@ -29,11 +30,11 @@ window.onload = function () {
     $.ajax({
       url: proxy + browserLocationURL,
       success: function (data) {
-        // console.log(data);
         let lat = data.latitude;
         let lon = data.longitude;
 
         // using cordnates to get weather
+        $("#location").text(data.city);
         weatherCall(lat, lon);
       }
     })
@@ -44,7 +45,6 @@ function weatherCall(lat, lon) {
   $.ajax({
     url: proxy + weatherURL,
     success: function (data) {
-      console.log(data);
       getForcast(data);
       moonPhase(data);
     }
@@ -62,7 +62,6 @@ function weatherCall(lat, lon) {
     $.ajax({
       url: proxy + astronomyURL,
       success: function (data) {
-        console.log(data);
         let moonrise = data.moonrise ;
         let moonset = data.moonset;
         
@@ -107,11 +106,11 @@ let x = 1;
 
       let icon = input.hourly.data[i].icon;
       let newIcon = $("<img>").text(icon);
-      $("#date" + x).text("");
+      $(".date" + x).text("");
       $("#conditions" + x).text("");
       $("#temp" + x).text("");
 
-      $("#date" + x).append(newDisplayDay);
+      $(".date" + x).append(newDisplayDay);
       $("#conditions" + x).append(newConditions);
       $("#conditions" + x).append(newIcon);
       $("#temp" + x).append(newTemp);
@@ -123,10 +122,6 @@ let x = 1;
       else{
         $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/cloudy.jpg)")
       }
-      
-    console.log(date);
-    console.log(lat);
-    console.log(lon);
       $("#stars"+ x).on("click",function(){
         $("#bigdiv").attr("class","overlay")
         $("iframe").attr("src", "https://virtualsky.lco.global/embed/index.html?longitude="+lon+"&latitude="+lat+"&projection=stereo&constellations=true&constellationlabels=true&magnitude=6&clock="+ date)
