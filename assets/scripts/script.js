@@ -4,7 +4,7 @@ window.onload = function () {
 
   latLon();
 
-  $("#button").on("click", function (event) {
+  $("#formwidth").on("submit", function (event) {
     event.preventDefault();
 
     let search = $("#search").val();
@@ -48,7 +48,7 @@ function weatherCall(lat, lon) {
       moonPhase(data);
     }
   })
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 7; i++) {
     let date = ""
     if (i == 0) {
       date = ""
@@ -64,6 +64,9 @@ function weatherCall(lat, lon) {
         console.log(data);
         let moonrise = data.moonrise ;
         let moonset = data.moonset;
+        
+        $("#moonrise" + (i +1)).text("")
+        $("#moonset" + (i +1)).text("")
         $("#moonrise" + (i +1)).text("Moonrise: " +moonrise)
         $("#moonset" + (i +1)).text("Moonset: " +moonset)
       }
@@ -92,6 +95,9 @@ function getForcast(input) {
 
       let icon = input.hourly.data[i].icon;
       let newIcon = $("<img>").text(icon);
+      $("#date" + x).text("");
+      $("#conditions" + x).text("");
+      $("#temp" + x).text("");
 
       $("#date" + x).append(newDisplayDay);
       $("#conditions" + x).append(newConditions);
@@ -99,7 +105,7 @@ function getForcast(input) {
       $("#temp" + x).append(newTemp);
       if (clouds < .2){
         $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/clear.jpg)")
-      }else if(clouds < .4){
+      }else if(clouds < .6){
         $("#day"+x).attr("style","background-size: cover;background-image: url(./assets/images/light.jpg)")
       }
       else{
