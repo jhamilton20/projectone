@@ -70,6 +70,10 @@ p {
     padding: 15px;
 }
 
+.brand-logo {
+    font-family: orbitron;
+}
+
 #side-panel {
     font-size: 10px;
 }
