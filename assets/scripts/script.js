@@ -175,10 +175,10 @@ function closeout() {
 function moonPhase(input) {
   for (let i = 0; i < input.daily.data.length; i++) {
     let moon = input.daily.data[i].moonPhase
-    if (moon < .05) {
+    if (moon < .05|| moon > .95) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/0.png")
       $("#moonphase" + (i + 1)).attr("height", "150px")
-    } else if (moon < .20 || moon > .95) {
+    } else if (moon < .20 ) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/10.png")
       $("#moonphase" + (i + 1)).attr("height", "150px")
     } else if (moon < .30) {
