@@ -65,39 +65,6 @@ a{
     margin:0;
 }
 
-#stars1 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-#stars2 {
-    position: relative;
-    left: 40%;
-    margin-top: 200px;
-}
-
-#stars3 {
-    position: relative;
-    left: 40%;
-    margin-top: 200px;
-}
-#stars4 {
-    position: relative;
-    left: 40%;
-}
-#stars5 {
-    position: relative;
-    left: 40%;
-}
-#stars6 {
-    position: relative;
-    left: 40%;
-    
-}
-#stars7 {
-    position: relative;
-    left: 40%;
-}
 p {
     margin: 0px;
     padding: 15px;
@@ -107,12 +74,15 @@ p {
     font-size: 10px;
 }
 .center {
-    text-align: center;
-    font-size: 25px;
-}
-
-#moonphase1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    /* text-align: center; */
+    font-size: 25px;
 }
+
+/* #moonphase1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+} */
