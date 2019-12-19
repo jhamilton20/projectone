@@ -6,6 +6,7 @@ body {
 
  .day {
     height: 100vh;
+    position: relative;
 }
 .grey {
     height: 100vh;
@@ -62,4 +63,42 @@ a{
     width: 0;
     padding:0;
     margin:0;
+}
+
+p {
+    margin: 0px;
+    padding: 15px;
+}
+
+#side-panel {
+    font-size: 10px;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+}
+@media screen and (max-width: 600px) {
+    .day {
+        height: calc(100vh - 140px);
+    }
+    .grey {
+        height: 100%;
+    }
+
+  }
+ #list li{
+     border:  2px solid grey darken-3;
+     
+     
+}
+#list li:hover {
+    cursor: pointer;
+background-color: black;
+}
+#search:focus{
+background-color:rgba(255,255, 255, .1);
+color: white;
+
 }

@@ -4458,7 +4458,8 @@ nav .input-field label i {
 }
 
 nav .input-field label.active i {
-  color: #fff;
+  /* color: #fff; */
+  color: rgba(255, 255, 255, .5)
 }
 
 .navbar-fixed {
