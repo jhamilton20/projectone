@@ -65,7 +65,7 @@ a{
 }
 @media screen and (max-width: 600px) {
     .day {
-        height: 50vh;
+        height: calc(100vh - 140px);
     }
     .grey {
         height: 100%;
