@@ -2,6 +2,7 @@ body {
     background-image: url(https://702pros.com/wp-content/uploads/2018/08/wallpaper.wiki-Constellation-Background-PIC-WPC005460.jpg);
     background-size: cover;
     background-attachment: fixed;
+    min-height: 100vh;
 }
 
  .day {
@@ -14,11 +15,8 @@ body {
 
 footer{
     position: relative;
-    bottom: 0%;
+    bottom: 0px;
     width: 100%;
-}
-.card-panel {
-    background-color: rgb(170, 159, 160);
 }
 #cityName {
     background-color: white;
@@ -81,15 +79,13 @@ p {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    /* text-align: center; */
     font-size: 25px;
 }
-
-/* #moonphase1 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
+.card-panel{
+    background-color:rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
 @media screen and (max-width: 600px) {
     .day {
         height: calc(100vh - 140px);
@@ -99,3 +95,21 @@ p {
     }
 
   }
+ #list li{
+     border:  2px solid grey darken-3;
+     
+     
+}
+#list li:hover {
+    cursor: pointer;
+background-color: black;
+}
+#search:focus{
+background-color:rgba(255,255, 255, .1);
+color: white;
+
+}
+.btn-large{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
