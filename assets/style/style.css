@@ -90,3 +90,12 @@ p {
     margin-left: auto;
     margin-right: auto;
 } */
+@media screen and (max-width: 600px) {
+    .day {
+        height: calc(100vh - 140px);
+    }
+    .grey {
+        height: 100%;
+    }
+
+  }
