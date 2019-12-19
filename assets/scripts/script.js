@@ -83,6 +83,8 @@ function weatherCall(lat, lon) {
 
 
     let astronomyURL = "https://api.ipgeolocation.io/astronomy?apiKey=046a27f2390c47298644a5a88760ffbb&lat=" + lat + "&long=" + lon + date;
+    $("#moonrise" + (i + 1)).append($("<p>").text("12:00"))
+    $("#moonset" + (i + 1)).append($("<p>").text("12:00"))
     $.ajax({
       url: proxy + astronomyURL,
       success: function (data) {
@@ -91,8 +93,9 @@ function weatherCall(lat, lon) {
 
         $("#moonrise" + (i + 1)).text("")
         $("#moonset" + (i + 1)).text("")
-        $("#moonrise" + (i + 1)).text("Moonrise: " + moonrise)
-        $("#moonset" + (i + 1)).text("Moonset: " + moonset)
+        // $("#moonrise" + (i + 1)).append($("<p>").text("Moonrise: " + moonrise))
+        // $("#moonset" + (i + 1)).append($("<p>").text("Moonset: " + moonset))
+       
       }
     })
   }
@@ -129,15 +132,12 @@ function getForcast(input) {
       let temp = input.hourly.data[i].temperature.toFixed(1);
       let newTemp = $("<p>").text(temp + "° F");
 
-      let icon = input.hourly.data[i].icon;
-      let newIcon = $("<img>").text(icon);
       $(".date" + x).text("");
       $("#conditions" + x).text("");
       $("#temp" + x).text("");
 
       $(".date" + x).append(newDisplayDay);
       $("#conditions" + x).append(newConditions);
-      $("#conditions" + x).append(newIcon);
       $("#temp" + x).append(newTemp);
       if (clouds < .25) {
         $("#day" + x).attr("style", "background-size: cover;background-image: url(./assets/images/clear.jpg)")
