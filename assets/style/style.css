@@ -6,6 +6,7 @@ body {
 
  .day {
     height: 100vh;
+    position: relative;
 }
 .grey {
     height: 100vh;
@@ -63,6 +64,28 @@ a{
     padding:0;
     margin:0;
 }
+
+p {
+    margin: 0px;
+    padding: 15px;
+}
+
+#side-panel {
+    font-size: 10px;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* text-align: center; */
+    font-size: 25px;
+}
+
+/* #moonphase1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+} */
 @media screen and (max-width: 600px) {
     .day {
         height: calc(100vh - 140px);
