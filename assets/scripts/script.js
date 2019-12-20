@@ -3,6 +3,10 @@ let proxy = 'https://cors-anywhere.herokuapp.com/';
 let lat;
 let lon;
 window.onload = function () {
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+        
 
   latLon();
 
@@ -82,19 +86,20 @@ function weatherCall(lat, lon) {
     }
 
 
-    let astronomyURL = "https://api.ipgeolocation.io/astronomy?apiKey=046a27f2390c47298644a5a88760ffbb&lat=" + lat + "&long=" + lon + date;
-    $("#moonrise" + (i + 1)).append($("<p>").text("12:00"))
-    $("#moonset" + (i + 1)).append($("<p>").text("12:00"))
+    let astronomyURL = "https://api.ipgeolocation.io/astronomy?apiKey=54999f194852428c9bb1dd4bceaa46cf&lat=" + lat + "&long=" + lon + date; 
     $.ajax({
       url: proxy + astronomyURL,
       success: function (data) {
+        console.log(data)
+        let sunset = data.sunset
         let moonrise = data.moonrise;
         let moonset = data.moonset;
-
+        $("#sunset" + (i + 1)).text("")
         $("#moonrise" + (i + 1)).text("")
         $("#moonset" + (i + 1)).text("")
-        // $("#moonrise" + (i + 1)).append($("<p>").text("Moonrise: " + moonrise))
-        // $("#moonset" + (i + 1)).append($("<p>").text("Moonset: " + moonset))
+        $("#sunset" + (i + 1)).append($("<p>").text("Sunset: " + ampm(sunset)))
+        $("#moonrise" + (i + 1)).append($("<p>").text("Moonrise: " + ampm(moonrise)))
+        $("#moonset" + (i + 1)).append($("<p>").text("Moonset: " + ampm(moonset)))
        
       }
     })
@@ -175,31 +180,52 @@ function closeout() {
 function moonPhase(input) {
   for (let i = 0; i < input.daily.data.length; i++) {
     let moon = input.daily.data[i].moonPhase
-    if (moon < .05|| moon > .95) {
+    if (moon < .03|| moon > .97) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/0.png")
-      $("#moonphase" + (i + 1)).attr("height", "150px")
+      $("#moonphase" + (i + 1)).attr("height", "200px")
     } else if (moon < .20 ) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/10.png")
-      $("#moonphase" + (i + 1)).attr("height", "150px")
+      $("#moonphase" + (i + 1)).attr("height", "200px")
     } else if (moon < .30) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/25.png")
-      $("#moonphase" + (i + 1)).attr("height", "150px")
+      $("#moonphase" + (i + 1)).attr("height", "200px")
     } else if (moon < .45) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/40.png")
-      $("#moonphase" + (i + 1)).attr("height", "150px")
+      $("#moonphase" + (i + 1)).attr("height", "200px")
     } else if (moon < .55) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/50.png")
-      $("#moonphase" + (i + 1)).attr("height", "150px")
+      $("#moonphase" + (i + 1)).attr("height", "200px")
     } else if (moon < .70) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/60.png")
-      $("#moonphase" + (i + 1)).attr("height", "150px")
+      $("#moonphase" + (i + 1)).attr("height", "200px")
     } else if (moon < .80) {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/75.png")
-      $("#moonphase" + (i + 1)).attr("height", "150px")
+      $("#moonphase" + (i + 1)).attr("height", "200px")
     } else {
       $("#moonphase" + (i + 1)).attr("src", "./assets/images/90.png")
-      $("#moonphase" + (i + 1)).attr("height", "150px")
+      $("#moonphase" + (i + 1)).attr("height", "200px")
     }
 
   }
+}
+function ampm(input){
+  let hour = input.slice(0,2);
+  let minutes = input.slice(2,5)
+  let output =""
+  console.log(hour)
+  console.log(minutes)
+  if (hour == 00){
+    output = "12"+ minutes + "A.M."
+  }
+  if (hour == 12){
+    output = "12"+ minutes + "P.M."
+  }
+  if (hour < 12){
+    output = hour + minutes + "A.M."
+  }
+  if (hour > 12){
+    output = (hour -12)+ minutes + "P.M."
+  }
+  console.log (output)
+  return output
 }
