@@ -3,6 +3,10 @@ let proxy = 'https://cors-anywhere.herokuapp.com/';
 let lat;
 let lon;
 window.onload = function () {
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+        
 
   latLon();
 

@@ -6,11 +6,11 @@ body {
 }
 
  .day {
-    height: 100vh;
+    min-height: calc(100vh - 64px);
     position: relative;
 }
 .grey {
-    height: 100vh;
+    min-height: calc(100vh - 64px);
 }
 
 footer{
@@ -86,19 +86,11 @@ p {
     margin-bottom: 20px;
     margin-top: 20px;
 }
-@media screen and (max-width: 600px) {
-    .day {
-        height: calc(100vh - 140px);
-    }
-    .grey {
-        height: 100%;
-    }
 
-  }
  #list li{
      border:  2px solid grey darken-3;
      
-     
+   
 }
 #list li:hover {
     cursor: pointer;
@@ -113,3 +105,23 @@ color: white;
     margin-top: 20px;
     margin-bottom: 20px;
 }
+.no-shadows {
+    box-shadow: none!important;
+}
+@media screen and (max-width: 600px) {
+    .day {
+        height: calc(100vh - 140px);
+    }
+    .grey {
+        height: 100%;
+    }
+  }
+  @media screen and (min-width: 600px) {
+    .hidden{
+        display: none;
+        height: 0;
+        width: 0;
+        padding:0;
+        margin:0;
+    } 
+  }
