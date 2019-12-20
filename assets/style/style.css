@@ -2,23 +2,21 @@ body {
     background-image: url(https://702pros.com/wp-content/uploads/2018/08/wallpaper.wiki-Constellation-Background-PIC-WPC005460.jpg);
     background-size: cover;
     background-attachment: fixed;
+    min-height: 100vh;
 }
 
  .day {
-    height: 100vh;
+    min-height: calc(100vh - 64px);
     position: relative;
 }
 .grey {
-    height: 100vh;
+    min-height: calc(100vh - 64px);
 }
 
 footer{
     position: relative;
-    bottom: 0%;
+    bottom: 0px;
     width: 100%;
-}
-.card-panel {
-    background-color: rgb(170, 159, 160);
 }
 #cityName {
     background-color: white;
@@ -83,26 +81,53 @@ p {
     margin-right: auto;
     font-size: 25px;
 }
-@media screen and (max-width: 600px) {
-    .day {
-        height: calc(100vh - 140px);
-    }
-    .grey {
-        height: 100%;
-    }
+.card-panel{
+    background-color:rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
 
-  }
  #list li{
      border:  2px solid grey darken-3;
      
      
 }
-#list li:hover {
+li:hover {
     cursor: pointer;
 background-color: black;
+}
+ul li{
+    float: none !important;
 }
 #search:focus{
 background-color:rgba(255,255, 255, .1);
 color: white;
 
 }
+.btn-large{
+    margin-top: 20px;
+}
+.no-shadows {
+    box-shadow: none!important;
+}
+@media screen and (max-width: 600px) {
+    .l10 {
+        min-height: calc(100vh - 140px) !important;
+    }
+    .grey {
+        height: 100%;
+        min-height: 0px;
+    }
+  }
+  h2{
+      margin: 10px !important;
+    }
+  @media screen and (min-width: 600px) {
+    .hidden{
+        display: none;
+        height: 0;
+        width: 0;
+        padding:0;
+        margin:0;
+    } 
+  }
