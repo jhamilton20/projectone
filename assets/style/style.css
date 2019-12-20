@@ -90,11 +90,14 @@ p {
  #list li{
      border:  2px solid grey darken-3;
      
-   
+     
 }
 #list li:hover {
     cursor: pointer;
 background-color: black;
+}
+ul li{
+    float: none !important;
 }
 #search:focus{
 background-color:rgba(255,255, 255, .1);
@@ -103,17 +106,17 @@ color: white;
 }
 .btn-large{
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 .no-shadows {
     box-shadow: none!important;
 }
 @media screen and (max-width: 600px) {
     .day {
-        height: calc(100vh - 140px);
+        min-height: calc(100vh - 140px);
     }
     .grey {
         height: 100%;
+        min-height: 0px;
     }
   }
   @media screen and (min-width: 600px) {

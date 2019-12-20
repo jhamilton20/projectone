@@ -86,15 +86,17 @@ function weatherCall(lat, lon) {
     }
 
 
-    let astronomyURL = "https://api.ipgeolocation.io/astronomy?apiKey=54999f194852428c9bb1dd4bceaa46cf&lat=" + lat + "&long=" + lon + date; 
+    let astronomyURL = "https://api.ipgeolocation.io/astronomy?apiKey=046a27f2390c47298644a5a88760ffbb&lat=" + lat + "&long=" + lon + date; 
     $.ajax({
       url: proxy + astronomyURL,
       success: function (data) {
+        let sunset = data.sunset
         let moonrise = data.moonrise;
         let moonset = data.moonset;
-
+        $("#sunset" + (i + 1)).text("")
         $("#moonrise" + (i + 1)).text("")
         $("#moonset" + (i + 1)).text("")
+        $("#sunset" + (i + 1)).append(("<p>").text("Sunset: " + sunset))
         $("#moonrise" + (i + 1)).append($("<p>").text("Moonrise: " + moonrise))
         $("#moonset" + (i + 1)).append($("<p>").text("Moonset: " + moonset))
        
