@@ -40,8 +40,11 @@
   <div class="row">
     <div class="col l2 m3 s12 grey darken-3 white-text">
       <nav class="sidenav-trigger no-shadows grey darken-3">
-        <h2 id="location"></h2>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger hidden"><i class="material-icons">menu</i></a>
+        <div>
+        <h2 id="location" class="left"></h2>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger hidden right"><i class="material-icons">menu</i></a>
+      </div>
+      <br>
         <ul class="hide-on-small-only list">
           <li class="date1" data-day="day1"></li>
           <li class="date2" data-day="day2"></li>
@@ -52,13 +55,13 @@
           <li class="date7" data-day="day7"></li>
         </ul>
       <ul class="sidenav list grey darken-3" id="mobile-demo">
-        <li class="date1" data-day="day1"></li>
-        <li class="date2" data-day="day2"></li>
-        <li class="date3" data-day="day3"></li>
-        <li class="date4" data-day="day4"></li>
-        <li class="date5" data-day="day5"></li>
-        <li class="date6" data-day="day6"></li>
-        <li class="date7" data-day="day7"></li>
+        <li class="date1 sidenav-close" data-day="day1"></li>
+        <li class="date2 sidenav-close" data-day="day2"></li>
+        <li class="date3 sidenav-close" data-day="day3"></li>
+        <li class="date4 sidenav-close" data-day="day4"></li>
+        <li class="date5 sidenav-close" data-day="day5"></li>
+        <li class="date6 sidenav-close" data-day="day6"></li>
+        <li class="date7 sidenav-close" data-day="day7"></li>
       </ul>
 
     </div>
