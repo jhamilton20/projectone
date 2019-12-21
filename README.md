@@ -25,12 +25,9 @@ Launch: This website can be launched in a browser.
 Instructions for use:  If another developer would like to clone this project, they will need to obtain api keys from the websites listed above.
 
 
-
-Below a screenshot of the project can be viewed.
-
-![image of homescreen](/assets/images/stargazer1.png)
-![image of daily forecast](/assets/images/stargazer2.png)
-![image of star chart](/assets/images/stargazer3.png)
+![image of homescreen](/assets/images/stargazer1.PNG)
+![image of daily forecast](/assets/images/stargazer2.PNG)
+![image of star chart](/assets/images/stargazer3.PNG)
 
 
 
