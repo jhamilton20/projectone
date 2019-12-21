@@ -8,9 +8,11 @@ body {
  .day {
     min-height: calc(100vh - 64px);
     position: relative;
+    overflow: auto;
 }
 .grey {
     min-height: calc(100vh - 64px);
+    height: 100%;
 }
 
 footer{

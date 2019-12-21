@@ -73,6 +73,7 @@ function weatherCall(lat, lon) {
   $.ajax({
     url: proxy + weatherURL,
     success: function (data) {
+      console.log(data);
       getForcast(data);
       moonPhase(data);
     }
@@ -106,6 +107,7 @@ function weatherCall(lat, lon) {
   }
 }
 function getForcast(input) {
+  
   let x = 1;
 
   for (let i = 0; i < input.hourly.data.length; i++) {
